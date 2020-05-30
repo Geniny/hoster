@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,13 +18,14 @@
     </header>
 
     <nav id="navbar">
-        <a class="active" href="main.html">RanobeHub</a>
+        <a class="active" href="index.html">RanobeHub</a>
         <button onclick="profile()"><i class="fa fa-user"></i> Profile</button>
     </nav>
 
     <div id="signin_form" class="modal">
         <form class="modal-content" action="/action_page.php" method="post">
             <div class="container">
+                <span onclick="closeSignIn()" class="close" title="Close Modal">&times;</span>
                 <h1>Sign In</h1>
                 <hr>
                 <label for="uname"><b>Username</b></label>
@@ -39,6 +40,7 @@
     <div id="signup_form" class="modal">
         <form class="modal-content" action="/action_page.php">
             <div class="container">
+                <span onclick="closeSignUp()" class="close" title="Close Modal">&times;</span>
                 <h1>Sign Up</h1>
                 <hr>
                 <label for="email"><b>Email</b></label>
@@ -57,8 +59,10 @@
     <div id="profile_container" class="modal">
         <div class="modal-content">
             <div class="user-container">
-                <img src="img/screen.jpg" height="50%" width="50%">
+                <img src="img/screen.jpg" height="300px" width="300px">
                 <div class="user-info">
+                    <span onclick="document.getElementById('profile_container').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
                     <h1>Status: user</h1>
                     <h1>Email: user@mail.ru</h1>
                 </div>
@@ -131,13 +135,16 @@
         </div>
     </main>
 
+    <footer>
+        <hr>
+        <a href="https://github.com/Geniny">
+            <img src="img/git.png">
+        </a>
+        <p>Created by Dmitriy Horbachev</p> 
+    </footer>
 
-    
-    <footer>@RanobeHub created by Horbachev Dmitriy</footer>
-</body>
 
-</html>
-<script>
+    <script>
 
         var signin_form = document.getElementById('signin_form');
         var signup_form = document.getElementById('signup_form');
@@ -151,14 +158,20 @@
             signup_form.style.display = 'block';
         }
 
+        function closeSignUp() {
+            signup_form.style.display = 'none'
+        }
+
+        function closeSignIn() {
+            signin_form.style.display = 'none'
+        }
+
         function profile() {
             profile_container.style.display = 'block';
         }
 
-        window.onclick = function (event) 
-        {
-            if (event.target == profile_container) 
-            {
+        window.onclick = function (event) {
+            if (event.target == profile_container) {
                 profile_container.style.display = "none";
             }
             if (event.target == signin_form) {
@@ -183,3 +196,6 @@
             }
         }
     </script>
+</body>
+
+</html>
